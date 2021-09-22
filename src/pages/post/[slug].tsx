@@ -108,25 +108,25 @@ export default function Post({ post }: PostProps): JSX.Element {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const prismic = getPrismicClient();
-  const posts = await prismic.query([
-    Prismic.predicates.at('document.type', 'post'),
-  ]);
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const prismic = getPrismicClient();
+//   const posts = await prismic.query([
+//     Prismic.predicates.at('document.type', 'post'),
+//   ]);
 
-  const paths = posts.results.map(post => {
-    return {
-      params: {
-        slug: post.uid,
-      },
-    };
-  });
+//   const paths = posts.results.map(post => {
+//     return {
+//       params: {
+//         slug: post.uid,
+//       },
+//     };
+//   });
 
-  return {
-    paths,
-    fallback: true,
-  };
-};
+//   return {
+//     paths,
+//     fallback: true,
+//   };
+// };
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const prismic = getPrismicClient();
